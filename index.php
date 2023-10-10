@@ -38,6 +38,8 @@ $hotels = [
     ],
 
 ];
+var_dump($_GET['vote']);
+var_dump($_GET['parking']);
 
 ?>
 
@@ -56,6 +58,13 @@ $hotels = [
             color: white;
         }
 
+        select {
+            padding: 0.5rem !important;
+            width: 50% !important;
+            height: 50px !important;
+            min-height: 50px !important;
+        }
+
         table:hover {
             filter: drop-shadow(0px 0px 5px red);
         }
@@ -65,6 +74,29 @@ $hotels = [
 <body>
 
     <div class="container pt-5">
+
+        <form class="form-floating d-flex py-5 gap-5" method="get">
+            <select class="form-select" id="vote" name="vote" aria-label="Floating label select example">
+                <option disabled selected>filter by vote</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+
+            </select>
+
+            <select class="form-select" id="parking" name="parking" aria-label="Floating label select example">
+                <option disabled selected>filter by parking</option>
+                <option value="true">yes</option>
+                <option value="false">no</option>
+            </select>
+
+            <button type="submit">search</button>
+        </form>
+
+
+
         <table class="table table-dark table-hover">
             <thead>
                 <tr>
@@ -80,7 +112,8 @@ $hotels = [
             <tbody>
 
                 <?php foreach ($hotels as $key => $hotel) : ?>
-                    <tr>
+                    <tr <?php if ($_GET['parking'] = true) {
+                        } ?>>
                         <th><?= $key + 1 ?></th>
                         <td><?= $hotel["name"] ?></td>
                         <td><?= $hotel["description"] ?></td>
