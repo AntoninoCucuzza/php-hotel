@@ -55,13 +55,17 @@ $hotels = [
             min-height: 100vh;
             color: white;
         }
+
+        table:hover {
+            filter: drop-shadow(0px 0px 5px red);
+        }
     </style>
 </head>
 
 <body>
 
-    <div class="container pt-4">
-        <table class="table table-dark">
+    <div class="container pt-5">
+        <table class="table table-dark table-hover">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -74,46 +78,19 @@ $hotels = [
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry the Bird</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@twitter</td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>Larry the Bird</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@twitter</td>
-                </tr>
-                <tr>
-                    <th scope="row">5</th>
-                    <td>Larry the Bird</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@twitter</td>
-                </tr>
+
+                <?php foreach ($hotels as $key => $hotel) : ?>
+                    <tr>
+                        <th><?= $key + 1 ?></th>
+                        <td><?= $hotel["name"] ?></td>
+                        <td><?= $hotel["description"] ?></td>
+                        <td><?= $hotel["parking"] ? "Si" : "No" ?> </td>
+                        <td><?= $hotel["vote"] . '/5' ?></td>
+                        <td><?= $hotel["distance_to_center"] . 'm' ?></td>
+                    </tr>
+                <?php endforeach ?>
+
+
             </tbody>
         </table>
 
